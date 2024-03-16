@@ -1,13 +1,25 @@
 import { useState, useEffect } from "react";
 import ProfileLevel from "./ProfileLevel";
 import UserLiftStats from "./UserLiftStats";
+import useAuthUser from "react-auth-kit/hooks/useAuthUser";
+import useSignOut from "react-auth-kit/hooks/useSignOut";
+import { useNavigate } from "react-router-dom";
 
 interface ProfileFrameProps {
-    updates: boolean,
-    user: string
+    updates: boolean
 }
 
-function ProfileFrame({ updates, user }: ProfileFrameProps) {
+interface UserData {
+    username: string,
+    discordid: string
+}
+
+function ProfileFrame({ updates }: ProfileFrameProps) {
+
+    const user = useAuthUser<UserData>();
+    
+    const signOut = useSignOut();
+    const navigate = useNavigate();
 
     const [userProfile, setUserProfile] = useState({
         "name": "???",
@@ -19,7 +31,7 @@ function ProfileFrame({ updates, user }: ProfileFrameProps) {
     });
 
     useEffect(() => {
-        fetch(`http://localhost:5000/user/${user}`).then((response) => {
+        fetch(`http://localhost:5000/user/${user.username}`).then((response) => {
             response.json().then((userJSON) => {
                 setUserProfile(userJSON);
                 console.log("Profile Frame updated.")
@@ -27,11 +39,17 @@ function ProfileFrame({ updates, user }: ProfileFrameProps) {
         })
     }, [updates])
 
+    function handleSignOutClick() {
+        signOut();
+        navigate("/login");
+    }
+
     return (
         <div className="profileFrame">
             <h3>{userProfile.name}</h3>
             <ProfileLevel level={userProfile.level} xp={userProfile.xp}></ProfileLevel>
             <UserLiftStats squat={userProfile.squat} bench={userProfile.bench} deadlift={userProfile.deadlift}></UserLiftStats>
+            <button onClick={handleSignOutClick}>Sign Out</button>
         </div>
     );
 }

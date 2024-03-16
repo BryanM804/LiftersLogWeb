@@ -1,12 +1,20 @@
 import { BaseSyntheticEvent, useEffect, useState } from "react";
+import useAuthUser from "react-auth-kit/hooks/useAuthUser";
 
 interface HistoryFrameProps {
     updates: boolean,
-    onChanges: VoidFunction,
-    user: string
+    onChanges: VoidFunction
 }
 
-function HistoryFrame({ updates, onChanges, user }: HistoryFrameProps) {
+interface UserData {
+    username: string,
+    discordid: string
+}
+
+function HistoryFrame({ updates, onChanges }: HistoryFrameProps) {
+
+    const user = useAuthUser<UserData>() || {username: "", discordid: ""};
+    // It thinks this could be null but we should never end up here if there is no auth user
 
     const blankSet = [{
         "movement": "",
@@ -35,7 +43,7 @@ function HistoryFrame({ updates, onChanges, user }: HistoryFrameProps) {
     }, [])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/history/${user}`).then((response) => {
+        fetch(`http://localhost:5000/history/${user.discordid}`).then((response) => {
             response.json().then((allHistory) => {
 
                 let i = 0;

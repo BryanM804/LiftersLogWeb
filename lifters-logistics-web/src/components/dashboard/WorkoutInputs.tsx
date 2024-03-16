@@ -1,11 +1,19 @@
 import { useState, useEffect, SyntheticEvent, BaseSyntheticEvent } from "react";
+import useAuthUser from "react-auth-kit/hooks/useAuthUser";
 
 interface WorkoutInputsProps {
-    onChanges: VoidFunction,
-    user: string
+    onChanges: VoidFunction
 }
 
-function WorkoutInputs({ onChanges, user }: WorkoutInputsProps) {
+interface UserData {
+    username: string,
+    discordid: string
+}
+
+function WorkoutInputs({ onChanges }: WorkoutInputsProps) {
+
+    const user = useAuthUser<UserData>() || {username: "", discordid: ""};
+    // It thinks user could be null but this path will not be reached if there is no auth user
 
     const [movements, setMovements] = useState([{
         "movement": "",
@@ -47,7 +55,7 @@ function WorkoutInputs({ onChanges, user }: WorkoutInputsProps) {
                 "Content-type": "application/json; charset=UTF-8"
             },
             body: JSON.stringify({
-                userid: user,
+                userid: user.discordid,
                 movement: selectedMovement,
                 reps: repsPerformed,
                 weight: weightUsed,

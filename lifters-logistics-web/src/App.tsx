@@ -6,7 +6,7 @@ import Login from "./pages/Login";
 
 const router = createBrowserRouter([
 {
-  path: "/",
+  path: "/dashboard",
   element: <Dashboard></Dashboard>
 },
 {

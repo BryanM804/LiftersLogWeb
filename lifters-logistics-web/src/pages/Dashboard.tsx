@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import useIsAuthenticated from "react-auth-kit/hooks/useIsAuthenticated";
 import HistoryFrame from "../components/dashboard/HistoryFrame";
 import LogFrame from "../components/dashboard/LogFrame";
 import ProfileFrame from "../components/dashboard/ProfileFrame";
@@ -7,15 +8,22 @@ import "../styles/Dashboard.css";
 
 function Dashboard() {
 
-    const params = useParams<{userid: string}>();
+    const isAuth = useIsAuthenticated();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!isAuth()) {
+            navigate("/login");
+        }
+    }, [])
 
     const [updates, setUpdates] = useState(false);
 
     return (
         <>
-            <ProfileFrame updates={updates} user={params.userid || ""}></ProfileFrame>
-            <LogFrame onChanges={() => setUpdates(!updates)} user={params.userid || ""}></LogFrame>
-            <HistoryFrame onChanges={() => setUpdates(!updates)} updates={updates} user={params.userid || ""}></HistoryFrame>
+            <ProfileFrame updates={updates}></ProfileFrame>
+            <LogFrame onChanges={() => setUpdates(!updates)}></LogFrame>
+            <HistoryFrame onChanges={() => setUpdates(!updates)} updates={updates}></HistoryFrame>
         </>
     );
 }

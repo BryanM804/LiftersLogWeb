@@ -1,16 +1,15 @@
 import WorkoutInputs from "./WorkoutInputs";
 
 interface LogFrameProps {
-    onChanges: VoidFunction,
-    user: string
+    onChanges: VoidFunction
 }
 
-function LogFrame({ onChanges, user }: LogFrameProps) {
+function LogFrame({ onChanges }: LogFrameProps) {
 
     return (
         <div className="logFrame">
             <h2>Log</h2>
-            <WorkoutInputs onChanges={onChanges} user={user}></WorkoutInputs>
+            <WorkoutInputs onChanges={onChanges}></WorkoutInputs>
         </div>
     );
 }

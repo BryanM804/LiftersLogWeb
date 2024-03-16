@@ -1,10 +1,14 @@
 import { BaseSyntheticEvent, useState } from "react";
+import useSignIn from "react-auth-kit/hooks/useSignIn";
+import { useNavigate } from "react-router-dom";
 
 function LoginFrame() {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
+    const signIn = useSignIn();
+    const navigate = useNavigate();
 
     function handleSubmission(e: BaseSyntheticEvent) {
         e.preventDefault();
@@ -17,12 +21,24 @@ function LoginFrame() {
             body: JSON.stringify({
                 username: username,
                 password: password
-            }),
-            credentials: "include"
+            })
         }).then((response) => {
             response.json().then((responseJSON) => {
-                if (responseJSON.username) {
-
+                if (responseJSON.token) {
+                    signIn({
+                        auth: {
+                            token: responseJSON.token
+                        },
+                        userState: {
+                            username: responseJSON.username,
+                            discordid: responseJSON.discordid ? responseJSON.discordid : ""
+                        }
+                    });
+                    console.log("Signed in.");
+                    navigate(`/dashboard`);
+                } else {
+                    // Invalid login
+                    console.log("Invalid Login");
                 }
             })
         })
