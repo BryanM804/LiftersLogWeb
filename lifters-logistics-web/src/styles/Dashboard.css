@@ -1,0 +1,68 @@
+body {
+    font-family: Arial;
+    padding: 20px;
+}
+
+.profileFrame {
+    float: left;
+    width: 30%;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 3%;
+    padding: 20px;
+}
+
+.logFrame {
+    width: 30%;
+    margin-left: 10px;
+    float: inline-start;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 3%;
+    padding: 20px;
+}
+
+.historyFrame {
+    width: 30%;
+    float: right;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 3%;
+    padding: 20px;
+}
+
+.historyRows {
+    max-height: 500px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    border-top-style: solid;
+    border-bottom-style: solid;
+}
+
+.historyAdvanceButton {
+    padding: 10px 20px 10px 20px;
+}
+
+.undoButton {
+    margin: 15px;
+    padding: 10px;
+}
+
+.selectedRow {
+    background-color: blue;
+    cursor: default;
+    padding: 5px;
+}
+
+.unselectedRow:hover {
+    background-color: lightblue;
+}
+
+.unselectedRow {
+    background-color: lightgray;
+    cursor: pointer;
+    padding: 5px;
+}
