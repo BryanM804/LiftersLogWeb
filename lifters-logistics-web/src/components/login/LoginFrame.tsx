@@ -6,6 +6,7 @@ function LoginFrame() {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [invalidLogin, setInvalidLogin] = useState(false);
 
     const signIn = useSignIn();
     const navigate = useNavigate();
@@ -38,7 +39,7 @@ function LoginFrame() {
                     navigate(`/dashboard`);
                 } else {
                     // Invalid login
-                    console.log("Invalid Login");
+                    setInvalidLogin(true);
                 }
             })
         })
@@ -46,16 +47,16 @@ function LoginFrame() {
 
     return (
         <div className="loginFrame">
+            <h3>Login</h3>
             <form onSubmit={handleSubmission}>
-                <label htmlFor="usernameInput">Username:
-                    <input id="usernameInput" type="text" onChange={(e: BaseSyntheticEvent) => {setUsername(e.target.value)}}/>
-                </label><br />
-                <label htmlFor="passwordInput">Password:
-                    <input id="passwordInput" type="password" onChange={(e: BaseSyntheticEvent) => {setPassword(e.target.value)}}/>
-                </label><br />
+                <input id="usernameInput" placeholder="Username" type="text" onChange={(e: BaseSyntheticEvent) => {setUsername(e.target.value)}}/>
+                <br />
+                <input id="passwordInput" placeholder="Password" type="password" onChange={(e: BaseSyntheticEvent) => {setPassword(e.target.value)}}/>
+                <br />
+                {invalidLogin && <span className="errorText">Invalid username or password.</span>}
+                <br />
                 <input type="submit" />
             </form>
-            No account yet? <a>Create one here.</a>
         </div>
     );
 }

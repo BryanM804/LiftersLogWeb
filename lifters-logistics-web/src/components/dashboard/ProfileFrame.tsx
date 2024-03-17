@@ -16,7 +16,7 @@ interface UserData {
 
 function ProfileFrame({ updates }: ProfileFrameProps) {
 
-    const user = useAuthUser<UserData>();
+    const user = useAuthUser<UserData>() || { username: "", discordid: "" };
     
     const signOut = useSignOut();
     const navigate = useNavigate();
