@@ -6,11 +6,11 @@ import Login from "./pages/Login";
 
 const router = createBrowserRouter([
 {
-  path: "/dashboard",
+  path: "/LiftersLogisticsWeb/dashboard",
   element: <Dashboard></Dashboard>
 },
 {
-  path: "/",
+  path: "/LiftersLogisticsWeb/",
   element: <Login></Login>,
   errorElement: <div>404 not found</div>
 }
