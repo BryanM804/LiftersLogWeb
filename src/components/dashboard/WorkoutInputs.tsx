@@ -21,7 +21,7 @@ function WorkoutInputs({ onChanges }: WorkoutInputsProps) {
     }]);
     
     useEffect(() => {
-        fetch("http://localhost:5000/movements").then((response) => {
+        fetch("http://72.68.45.172:5000/movements").then((response) => {
             response.json().then((movementsJSON) => {
                 setMovements(movementsJSON);
             });

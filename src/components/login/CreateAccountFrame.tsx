@@ -18,7 +18,7 @@ function CreateAccountFrame() {
             setPasswordMatch(false);
             setUsernameTaken(false);
         } else {
-            fetch("http://localhost:5000/createuser", {
+            fetch("http://72.68.45.172:5000/createuser", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"

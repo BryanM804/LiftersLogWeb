@@ -31,7 +31,7 @@ function ProfileFrame({ updates }: ProfileFrameProps) {
     });
 
     useEffect(() => {
-        fetch(`http://localhost:5000/user/${user.username}`).then((response) => {
+        fetch(`http://72.68.45.172:5000/user/${user.username}`).then((response) => {
             response.json().then((userJSON) => {
                 setUserProfile(userJSON);
                 console.log("Profile Frame updated.")

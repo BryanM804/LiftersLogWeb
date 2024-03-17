@@ -45,7 +45,7 @@ function HistoryFrame({ updates, onChanges }: HistoryFrameProps) {
     useEffect(() => {
         console.log(user.discordid);
 
-        fetch(`http://localhost:5000/history/${user.discordid}`).then((response) => {
+        fetch(`http://72.68.45.172:5000/history/${user.discordid}`).then((response) => {
             response.json().then((allHistory) => {
 
                 let i = 0;

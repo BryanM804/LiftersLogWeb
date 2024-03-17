@@ -14,7 +14,7 @@ function LoginFrame() {
     function handleSubmission(e: BaseSyntheticEvent) {
         e.preventDefault();
 
-        fetch("http://localhost:5000/auth", {
+        fetch("http://72.68.45.172:5000/auth", {
             method: "POST",
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
