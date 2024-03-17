@@ -75,3 +75,7 @@ body {
     color: blue;
     cursor: pointer; 
 }
+
+.linkText:hover {
+    background-color: lightblue;
+}
