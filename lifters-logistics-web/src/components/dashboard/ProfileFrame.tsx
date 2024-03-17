@@ -41,7 +41,7 @@ function ProfileFrame({ updates }: ProfileFrameProps) {
 
     function handleSignOutClick() {
         signOut();
-        navigate("/login");
+        navigate("/");
     }
 
     return (

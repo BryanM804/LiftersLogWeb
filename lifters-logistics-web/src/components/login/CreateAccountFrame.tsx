@@ -33,7 +33,7 @@ function CreateAccountFrame() {
                         setPasswordMatch(true);
                         setUsernameTaken(true);
                     } else {
-                        navigate("/login");
+                        navigate("/");
                     }
                 })
             })

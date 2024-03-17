@@ -10,10 +10,6 @@ const router = createBrowserRouter([
   element: <Dashboard></Dashboard>
 },
 {
-  path: "/login",
-  element: <Login></Login>
-},
-{
   path: "/",
   element: <Login></Login>,
   errorElement: <div>404 not found</div>
