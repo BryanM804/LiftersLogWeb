@@ -49,7 +49,7 @@ function WorkoutInputs({ onChanges }: WorkoutInputsProps) {
     function handleSubmit(e: SyntheticEvent) {
         e.preventDefault();
         
-        fetch("http://localhost:5000/log", {
+        fetch("http://72.68.45.172:5000/log", {
             method: "POST",
             headers: {
                 "Content-type": "application/json; charset=UTF-8"

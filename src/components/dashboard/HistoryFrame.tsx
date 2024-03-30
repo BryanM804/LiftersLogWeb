@@ -106,7 +106,7 @@ function HistoryFrame({ updates, onChanges }: HistoryFrameProps) {
                     undos.push(set);
             }
 
-            fetch("http://localhost:5000/undo", {
+            fetch("http://72.68.45.172:5000/undo", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"
