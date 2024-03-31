@@ -49,13 +49,13 @@ function LoginFrame() {
         <div className="loginFrame">
             <h3>Login</h3>
             <form onSubmit={handleSubmission}>
-                <input id="usernameInput" placeholder="Username" type="text" onChange={(e: BaseSyntheticEvent) => {setUsername(e.target.value)}}/>
+                <input id="usernameInput" className="loginInputBox" placeholder="Username" type="text" onChange={(e: BaseSyntheticEvent) => {setUsername(e.target.value)}}/>
                 <br />
-                <input id="passwordInput" placeholder="Password" type="password" onChange={(e: BaseSyntheticEvent) => {setPassword(e.target.value)}}/>
+                <input id="passwordInput" className="loginInputBox" placeholder="Password" type="password" onChange={(e: BaseSyntheticEvent) => {setPassword(e.target.value)}}/>
                 <br />
                 {invalidLogin && <span className="errorText">Invalid username or password.</span>}
                 <br />
-                <input type="submit" />
+                <input className="loginSubmitButton" type="submit" />
             </form>
         </div>
     );

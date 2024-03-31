@@ -1,54 +1,107 @@
 body {
     font-family: Arial;
+    background-color: rgb(40, 40, 40);
+    color: rgb(200, 200, 200);
     padding: 20px;
 }
 
-.profileFrame {
-    float: left;
-    width: 30%;
-    border-style: solid;
-    border-width: 2px;
-    border-color: black;
-    border-radius: 3%;
-    padding: 20px;
+h2 {
+    color: white;
 }
 
-.logFrame {
-    width: 30%;
-    margin-left: 10px;
+.frameContainer {
+    width: 85%;
+    margin: auto;
+}
+
+.dashboardComponentFrame {
+    background-color: rgb(80, 80, 80);
     float: inline-start;
-    border-style: solid;
-    border-width: 2px;
-    border-color: black;
+    width: 28%;
+    border: 2px solid rgb(110, 110, 110);
     border-radius: 3%;
     padding: 20px;
-}
-
-.historyFrame {
-    width: 30%;
-    float: right;
-    border-style: solid;
-    border-width: 2px;
-    border-color: black;
-    border-radius: 3%;
-    padding: 20px;
+    margin: 10px;
 }
 
 .historyRows {
     max-height: 500px;
+    color: black;
     overflow-y: scroll;
     scrollbar-width: none;
     border-top-style: solid;
     border-bottom-style: solid;
 }
 
+.inputBox {
+    padding: 5px;
+    margin: 5px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+#movementInput {
+    width: 80%;
+}
+
+.inputLabel {
+    float: inline-start;
+    width: 20%;
+    margin: 0px 20px 0px 0px;
+}
+
 .historyAdvanceButton {
     padding: 10px 20px 10px 20px;
+    border-radius: 10px;
+    background-color: rgb(200, 200, 200);
+}
+.historyAdvanceButton:hover {
+    background-color: rgb(175, 175, 175);
+}
+.historyAdvanceButton:active {
+    background-color: rgb(150, 150, 150);
 }
 
 .undoButton {
     margin: 15px;
     padding: 10px;
+    background-color: rgb(200, 200, 200);
+    border-radius: 10px;
+}
+.undoButton:hover {
+    background-color: rgb(200, 75, 75);
+}
+.undoButton:active {
+    background-color: rgb(170, 50, 50);
+}
+
+.submitButton {
+    border-radius: 5px;
+    padding: 5px;
+    width: 75%;
+    display: block;
+    margin: auto;
+    font-family: Arial;
+    background-color: rgb(150, 200, 150);
+}
+.submitButton:hover {
+    background-color: rgb(125, 175, 125);
+}
+.submitButton:active {
+    background-color: rgb(100, 150, 100);
+}
+
+.logoutButton {
+    border-radius: 10px;
+    padding: 5px;
+    width: 20%;
+    background-color: rgb(200, 200, 200);
+}
+.logoutButton:hover {
+    background-color: rgb(200, 75, 75);
+}
+.logoutButton:active {
+    background-color: rgb(170, 50, 50);
 }
 
 .selectedRow {
@@ -65,17 +118,4 @@ body {
     background-color: lightgray;
     cursor: pointer;
     padding: 5px;
-}
-
-.errorText {
-    color: red;
-}
-
-.linkText {
-    color: blue;
-    cursor: pointer; 
-}
-
-.linkText:hover {
-    background-color: lightblue;
 }

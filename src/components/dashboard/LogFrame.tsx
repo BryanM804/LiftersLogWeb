@@ -7,7 +7,7 @@ interface LogFrameProps {
 function LogFrame({ onChanges }: LogFrameProps) {
 
     return (
-        <div className="logFrame">
+        <div className="dashboardComponentFrame" id="logFrame">
             <h2>Log</h2>
             <WorkoutInputs onChanges={onChanges}></WorkoutInputs>
         </div>

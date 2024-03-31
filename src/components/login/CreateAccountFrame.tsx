@@ -44,19 +44,19 @@ function CreateAccountFrame() {
         <div>
             <h3>Create Account</h3>
             <form onSubmit={handleSubmission}>
-                <input type="text" id="username" onChange={(e: BaseSyntheticEvent) => setNewUsername(e.target.value)} placeholder="Username" required/>
+                <input type="text" className="loginInputBox" id="username" onChange={(e: BaseSyntheticEvent) => setNewUsername(e.target.value)} placeholder="Username" required/>
                 <br />
-                <input type="password" id="password" onChange={(e: BaseSyntheticEvent) => setNewPassword(e.target.value)} placeholder="Password" required/>
+                <input type="password"className="loginInputBox"  id="password" onChange={(e: BaseSyntheticEvent) => setNewPassword(e.target.value)} placeholder="Password" required/>
                 <br />
-                <input type="password" id="passwordConfirm" onChange={(e: BaseSyntheticEvent) => setConfirmedPassword(e.target.value)} placeholder="Confirm Password" required/>
+                <input type="password" className="loginInputBox" id="passwordConfirm" onChange={(e: BaseSyntheticEvent) => setConfirmedPassword(e.target.value)} placeholder="Confirm Password" required/>
                 <br />
                 { !passwordMatch && <span className="errorText">Passwords do not match.<br /></span> }
                 { usernameTaken && <span className="errorText">Username already exists.<br/></span> }
-                <input type="submit"></input>
+                <input type="submit" className="loginSubmitButton"></input>
             </form>
             <br />
             <div>
-                <h4>WARNING</h4>
+                <h4 className="errorText">WARNING</h4>
                 <p><b>Do not enter any sensitive information</b> on this app! In its current state it is very unsecure. 
                 Do not use the same password you do for anything else due to the vulnerability of this. Use the password more as a PIN to get into your account.
                 <b>Your password cannot be manually changed</b> as of right now so do not forget it.</p>

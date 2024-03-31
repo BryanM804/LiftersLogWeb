@@ -45,11 +45,11 @@ function ProfileFrame({ updates }: ProfileFrameProps) {
     }
 
     return (
-        <div className="profileFrame">
-            <h3>{userProfile.name}</h3>
+        <div className="dashboardComponentFrame">
+            <h2>{userProfile.name}</h2>
             <ProfileLevel level={userProfile.level} xp={userProfile.xp}></ProfileLevel>
             <UserLiftStats squat={userProfile.squat} bench={userProfile.bench} deadlift={userProfile.deadlift}></UserLiftStats>
-            <button onClick={handleSignOutClick}>Sign Out</button>
+            <button onClick={handleSignOutClick} className="logoutButton">Log Out</button>
         </div>
     );
 }

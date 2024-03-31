@@ -1,0 +1,39 @@
+body {
+    padding: 20px;
+}
+
+h3 {
+    color: white;
+}
+
+.loginInputBox {
+    padding: 5px;
+    margin: 5px 5px 5px 0px;
+    border-radius: 10px;
+}
+
+.loginSubmitButton {
+    border-radius: 5px;
+    padding: 5px;
+    font-family: Arial;
+    background-color: lightblue;
+}
+.loginSubmitButton:hover {
+    background-color: rgb(160, 200, 210);
+}
+.loginSubmitButton:active {
+    background-color: rgb(140, 180, 190);
+}
+
+.errorText {
+    color: red;
+}
+
+.linkText {
+    color: blue;
+    cursor: pointer; 
+}
+
+.linkText:hover {
+    background-color: lightblue;
+}

@@ -123,8 +123,8 @@ function HistoryFrame({ updates, onChanges }: HistoryFrameProps) {
     }
 
     return (
-        <div className="historyFrame">
-            <h3>{historyDate}</h3>
+        <div className="dashboardComponentFrame">
+            <h2>{historyDate}</h2>
             <button onClick={() => handleAdvanceClick(false)} className="historyAdvanceButton">{"<"}</button>
             <button onClick={handleUndoClick} className="undoButton">Undo</button>
             <button onClick={() => handleAdvanceClick(true)} className="historyAdvanceButton">{">"}</button>

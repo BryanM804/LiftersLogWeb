@@ -77,19 +77,20 @@ function WorkoutInputs({ onChanges }: WorkoutInputsProps) {
                     <option value={movement.movement} key={movement.exerciseid}/>
                 )}
             </datalist>
-            <label htmlFor="movementInput">Movement:
-                <input type="text" required={true} id="movementInput" autoComplete="on" list="movementList" onChange={handleMovementChange} value={selectedMovement}/><br />
+            <label htmlFor="movementInput">Movement
+                <input className="inputBox" type="text" required={true} id="movementInput" autoComplete="on" list="movementList" onChange={handleMovementChange} value={selectedMovement}/><br />
             </label>
-            <label htmlFor="weightInput">Weight:
-                <input type="number" id="weightInput" onChange={handleWeightChange} value={weightUsed} min={0} max={1000}/><br />
+            <label htmlFor="weightInput" className="inputLabel" >Weight
+                <input className="inputBox" type="number" id="weightInput" onChange={handleWeightChange} value={weightUsed} min={0} max={1000}/>
             </label>
-            <label htmlFor="repsInput">Reps:
-                <input type="number" id="repsInput" onChange={handleRepsChange} value={repsPerformed} min={1} max={200}/><br />
+            <label htmlFor="repsInput" className="inputLabel">Reps
+                <input className="inputBox" type="number" id="repsInput" onChange={handleRepsChange} value={repsPerformed} min={1} max={200}/>
             </label>
-            <label htmlFor="setsInput">Sets:
-                <input type="number" id="setsInput" onChange={handleSetsChange} value={setsPerformed} min={1} max={20}/><br />
+            <label htmlFor="setsInput" className="inputLabel">Sets
+                <input className="inputBox" type="number" id="setsInput" onChange={handleSetsChange} value={setsPerformed} min={1} max={20}/>
             </label>
-            <button type="submit">Submit</button>
+            <br />
+            <input type="submit" className="submitButton"></input>
         </form>
     );
 }

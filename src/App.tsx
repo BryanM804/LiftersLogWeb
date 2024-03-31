@@ -1,8 +1,8 @@
 import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AuthProvider from "react-auth-kit";
 import createStore from "react-auth-kit/createStore";
-import Login from "./pages/Login";
 
 const router = createBrowserRouter([
 {
