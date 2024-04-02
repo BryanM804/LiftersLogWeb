@@ -6,7 +6,8 @@ import useSignOut from "react-auth-kit/hooks/useSignOut";
 import { useNavigate } from "react-router-dom";
 
 interface ProfileFrameProps {
-    updates: boolean
+    updates: boolean,
+    onChanges: VoidFunction
 }
 
 interface UserData {
@@ -14,7 +15,7 @@ interface UserData {
     discordid: string
 }
 
-function ProfileFrame({ updates }: ProfileFrameProps) {
+function ProfileFrame({ updates, onChanges }: ProfileFrameProps) {
 
     const user = useAuthUser<UserData>() || { username: "", discordid: "" };
     
@@ -48,7 +49,7 @@ function ProfileFrame({ updates }: ProfileFrameProps) {
         <div className="dashboardComponentFrame">
             <h2>{userProfile.name}</h2>
             <ProfileLevel level={userProfile.level} xp={userProfile.xp}></ProfileLevel>
-            <UserLiftStats squat={userProfile.squat} bench={userProfile.bench} deadlift={userProfile.deadlift}></UserLiftStats>
+            <UserLiftStats squat={userProfile.squat} bench={userProfile.bench} deadlift={userProfile.deadlift} onChanges={onChanges}></UserLiftStats>
             <button onClick={handleSignOutClick} className="logoutButton">Log Out</button>
         </div>
     );

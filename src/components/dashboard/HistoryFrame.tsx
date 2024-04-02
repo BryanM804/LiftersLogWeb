@@ -1,5 +1,6 @@
 import { BaseSyntheticEvent, useEffect, useState } from "react";
 import useAuthUser from "react-auth-kit/hooks/useAuthUser";
+import LabelChanger from "./LabelChanger";
 
 interface HistoryFrameProps {
     updates: boolean,
@@ -28,6 +29,8 @@ function HistoryFrame({ updates, onChanges }: HistoryFrameProps) {
     }];
 
     const [history, setHistory] = useState(blankSet);
+    const [currentLabel, setCurrentLabel] = useState("");
+    const [changingLabel, setChangingLabel] = useState(false);
     const [ctrlHeld, setCtrlHeld] = useState(false);
     const [historyDate, setHistoryDate] = useState(new Date().toDateString());
     const [selections, setSelections] = useState([0]);
@@ -45,6 +48,7 @@ function HistoryFrame({ updates, onChanges }: HistoryFrameProps) {
     useEffect(() => {
         console.log(user.discordid);
 
+        // Get history data
         fetch(`http://72.68.45.172:5000/history/${user.discordid}`).then((response) => {
             response.json().then((allHistory) => {
 
@@ -73,6 +77,17 @@ function HistoryFrame({ updates, onChanges }: HistoryFrameProps) {
                 console.log("History Frame Updated.");
             });
         });
+
+        // Get label if there is one
+        fetch(`http://72.68.45.172:5000/label/${user.discordid}/${historyDate}`).then((response) => {
+            response.json().then((labelJSON) => {
+                if (labelJSON.length > 0) {
+                    setCurrentLabel(labelJSON[0].label);
+                } else {
+                    setCurrentLabel("");
+                }
+            })
+        })
     }, [historyDate, updates, selections]);
 
     function handleAdvanceClick(isAdvance: boolean) {
@@ -82,6 +97,7 @@ function HistoryFrame({ updates, onChanges }: HistoryFrameProps) {
             setHistoryDate(new Date(Date.parse(historyDate) - 86400000 ).toDateString());
         }
 
+        setChangingLabel(false);
         onChanges();
     }
 
@@ -124,14 +140,25 @@ function HistoryFrame({ updates, onChanges }: HistoryFrameProps) {
 
     return (
         <div className="dashboardComponentFrame">
-            <h2>{historyDate}</h2>
+            { !changingLabel ?
+                <u><h2 onClick={() => setChangingLabel(true)}>{currentLabel === "" ? historyDate : currentLabel}</h2></u>
+            :
+                <LabelChanger onClick={() => {
+                    setChangingLabel(false);
+                    onChanges();
+                }}
+                prevLabel={currentLabel} date={historyDate}/>
+            }
+            {
+                currentLabel != "" && <h4 id="dateSubtitle">{historyDate}</h4>
+            }
             <button onClick={() => handleAdvanceClick(false)} className="historyAdvanceButton">{"<"}</button>
             <button onClick={handleUndoClick} className="undoButton">Undo</button>
             <button onClick={() => handleAdvanceClick(true)} className="historyAdvanceButton">{">"}</button>
             <div className="historyRows">
                 {history.length > 0 ? history.map(set => 
                     <p onClick={handleRowClick} id={`${set.setid}`} key={set.setid} className={set.selected ? "selectedRow" : "unselectedRow"}>
-                        {`[${set.date}] ${set.movement} ${set.weight}lbs x ${set.reps} reps`}
+                        {`${set.movement} ${set.weight}lbs x ${set.reps} reps`}
                     </p>
                 ) : <p>No History</p>}
             </div>

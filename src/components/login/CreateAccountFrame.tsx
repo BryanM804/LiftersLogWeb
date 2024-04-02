@@ -57,9 +57,15 @@ function CreateAccountFrame() {
             <br />
             <div>
                 <h4 className="errorText">WARNING</h4>
-                <p><b>Do not enter any sensitive information</b> on this app! In its current state it is very unsecure. 
-                Do not use the same password you do for anything else due to the vulnerability of this. Use the password more as a PIN to get into your account.
-                <b>Your password cannot be manually changed</b> as of right now so do not forget it.</p>
+                <p>
+                    <b>Do not enter any sensitive information</b> on this app! In its current state it is very unsecure. 
+                    Do not use the same password you do for anything else due to the vulnerability of this app. Use the password more as a PIN to get into your account.
+                    <b>Your password cannot be manually changed</b> as of right now so do not forget it.
+                </p>
+                <p>
+                    This is currently meant to pair with your already existing discord profile. <b>Your username must match your discord username exactly (CASE SENSITIVE)</b> to pair with your existing profile.
+                    You can still use this without a discord profile, but if you choose to use the bot later there is currently no way to link them after, so before creating your account go on discord and use /profile to create a profile.
+                </p>
             </div>
             <br />
         </div>

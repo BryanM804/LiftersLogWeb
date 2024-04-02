@@ -22,7 +22,7 @@ function Dashboard() {
 
     return (
         <div className="frameContainer">
-            <ProfileFrame updates={updates}></ProfileFrame>
+            <ProfileFrame onChanges={() => setUpdates(!updates)} updates={updates}></ProfileFrame>
             <LogFrame onChanges={() => setUpdates(!updates)}></LogFrame>
             <HistoryFrame onChanges={() => setUpdates(!updates)} updates={updates}></HistoryFrame>
         </div>

@@ -1,6 +1,6 @@
 body {
     font-family: Arial;
-    background-color: rgb(40, 40, 40);
+    background-color: rgb(25, 25, 25);
     color: rgb(200, 200, 200);
     padding: 20px;
 }
@@ -15,7 +15,7 @@ h2 {
 }
 
 .dashboardComponentFrame {
-    background-color: rgb(80, 80, 80);
+    background-color: rgb(60, 60, 60);
     float: inline-start;
     width: 28%;
     border: 2px solid rgb(110, 110, 110);
@@ -33,13 +33,19 @@ h2 {
     border-bottom-style: solid;
 }
 
+#dateSubtitle {
+    float: inline-end;
+}
+
 .inputBox {
     padding: 5px;
     margin: 5px;
-    width: 100%;
+    width: 95%;
     border-radius: 10px;
 }
-
+#labelInput {
+    width: 95%;
+}
 #movementInput {
     width: 80%;
 }
@@ -108,6 +114,7 @@ h2 {
     background-color: blue;
     cursor: default;
     padding: 5px;
+    border-radius: 5px;
 }
 
 .unselectedRow:hover {
@@ -118,4 +125,5 @@ h2 {
     background-color: lightgray;
     cursor: pointer;
     padding: 5px;
+    border-radius: 5px;
 }
