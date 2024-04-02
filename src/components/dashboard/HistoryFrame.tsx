@@ -152,9 +152,11 @@ function HistoryFrame({ updates, onChanges }: HistoryFrameProps) {
             {
                 currentLabel != "" && <h4 id="dateSubtitle">{historyDate}</h4>
             }
-            <button onClick={() => handleAdvanceClick(false)} className="historyAdvanceButton">{"<"}</button>
-            <button onClick={handleUndoClick} className="undoButton">Undo</button>
-            <button onClick={() => handleAdvanceClick(true)} className="historyAdvanceButton">{">"}</button>
+            <div className="historyButtons">
+                <button onClick={() => handleAdvanceClick(false)} className="historyAdvanceButton">{"<"}</button>
+                <button onClick={handleUndoClick} className="undoButton">Undo</button>
+                <button onClick={() => handleAdvanceClick(true)} className="historyAdvanceButton">{">"}</button>
+            </div>
             <div className="historyRows">
                 {history.length > 0 ? history.map(set => 
                     <p onClick={handleRowClick} id={`${set.setid}`} key={set.setid} className={set.selected ? "selectedRow" : "unselectedRow"}>

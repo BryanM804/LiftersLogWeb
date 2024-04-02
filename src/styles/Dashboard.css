@@ -2,7 +2,6 @@ body {
     font-family: Arial;
     background-color: rgb(25, 25, 25);
     color: rgb(200, 200, 200);
-    padding: 20px;
 }
 
 h2 {
@@ -11,7 +10,9 @@ h2 {
 
 .frameContainer {
     width: 85%;
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
 }
 
 .dashboardComponentFrame {
@@ -25,7 +26,8 @@ h2 {
 }
 
 .historyRows {
-    max-height: 500px;
+    max-height: 300px;
+    margin-top: 80px;
     color: black;
     overflow-y: scroll;
     scrollbar-width: none;
@@ -34,7 +36,9 @@ h2 {
 }
 
 #dateSubtitle {
-    float: inline-end;
+    float: inline-start;
+    position: absolute;
+    margin-top: -10px;
 }
 
 .inputBox {
@@ -54,6 +58,10 @@ h2 {
     float: inline-start;
     width: 20%;
     margin: 0px 20px 0px 0px;
+}
+
+.historyButtons {
+    position: absolute;
 }
 
 .historyAdvanceButton {
@@ -87,6 +95,7 @@ h2 {
     width: 75%;
     display: block;
     margin: auto;
+    margin-bottom: 20px;
     font-family: Arial;
     background-color: rgb(150, 200, 150);
 }
@@ -100,7 +109,7 @@ h2 {
 .logoutButton {
     border-radius: 10px;
     padding: 5px;
-    width: 20%;
+    width: 30%;
     background-color: rgb(200, 200, 200);
 }
 .logoutButton:hover {
