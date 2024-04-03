@@ -13,6 +13,8 @@ h2 {
     margin-left: auto;
     margin-right: auto;
     display: flex;
+    flex-basis: 33%;
+    flex-wrap: wrap;
 }
 
 .dashboardComponentFrame {
@@ -23,10 +25,27 @@ h2 {
     border-radius: 3%;
     padding: 20px;
     margin: 10px;
+    max-height: 400px;
+    height: 400px;
+}
+
+#movementInputContainer {
+    display: block;
+    text-align: center;
+    width: 100%;
+    margin: auto;
+}
+#smallWorkoutInputContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    margin: auto;
+    margin-top: 5px;
 }
 
 .historyRows {
-    max-height: 300px;
+    max-height: 280px;
     margin-top: 80px;
     color: black;
     overflow-y: scroll;
@@ -44,20 +63,24 @@ h2 {
 .inputBox {
     padding: 5px;
     margin: 5px;
-    width: 95%;
+    margin-left: 0px;
+    width: 50px;
     border-radius: 10px;
 }
-#labelInput {
-    width: 95%;
+.longInputBox {
+    width: 80%;
+    display: block;
+    margin: auto;
 }
 #movementInput {
     width: 80%;
 }
 
 .inputLabel {
-    float: inline-start;
-    width: 20%;
-    margin: 0px 20px 0px 0px;
+    width: 25%;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .historyButtons {
@@ -92,8 +115,7 @@ h2 {
 .submitButton {
     border-radius: 5px;
     padding: 5px;
-    width: 75%;
-    display: block;
+    width: 25%;
     margin: auto;
     margin-bottom: 20px;
     font-family: Arial;
@@ -104,6 +126,11 @@ h2 {
 }
 .submitButton:active {
     background-color: rgb(100, 150, 100);
+}
+
+.longSubmitButton {
+    width: 75%;
+    display: block;
 }
 
 .logoutButton {
@@ -135,4 +162,8 @@ h2 {
     cursor: pointer;
     padding: 5px;
     border-radius: 5px;
+}
+
+#xpText {
+    font-size: 10px;
 }

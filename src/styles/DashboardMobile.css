@@ -3,11 +3,14 @@
         width: 90%;
         margin-left: auto;
         margin-right: auto;
+        font-size: 18px;
+        display: block;
+        height: auto;
     }
 
     .frameContainer {
         width: 100%;
-        margin: 0%;
+        margin: 0 auto;
         padding: 0px;
         display: flex;
         flex-wrap: wrap;
@@ -16,5 +19,38 @@
     #dateSubtitle {
         float: inline-start;
         margin-top: -10px;
+    }
+
+    .submitButton {
+        padding: 10px;
+    }
+
+    .logoutButton {
+        padding: 10px;
+    }
+
+    .historyFrame {
+        max-height: 500px;
+    }
+
+    .historyAdvanceButton {
+        padding: 15px 25px 15px 25px;
+    }
+
+    .historyRows {
+        max-height: 300px;
+        margin-top: 100px;
+    }
+
+    .undoButton {
+        padding: 15px;
+    }
+
+    .inputBox {
+        padding: 10px;
+        width: 35px;
+    }
+    .longInputBox {
+        width: 90%;
     }
 }

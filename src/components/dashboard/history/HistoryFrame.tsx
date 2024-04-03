@@ -139,7 +139,7 @@ function HistoryFrame({ updates, onChanges }: HistoryFrameProps) {
     }
 
     return (
-        <div className="dashboardComponentFrame">
+        <div className="dashboardComponentFrame historyFrame">
             { !changingLabel ?
                 <u><h2 onClick={() => setChangingLabel(true)}>{currentLabel === "" ? historyDate : currentLabel}</h2></u>
             :

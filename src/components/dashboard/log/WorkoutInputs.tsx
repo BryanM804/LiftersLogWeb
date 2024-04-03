@@ -71,26 +71,31 @@ function WorkoutInputs({ onChanges }: WorkoutInputsProps) {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} id="workoutInputsContainer">
             <datalist id="movementList">
                 {movements.map((movement) => 
                     <option value={movement.movement} key={movement.exerciseid}/>
                 )}
             </datalist>
-            <label htmlFor="movementInput">Movement
-                <input className="inputBox" type="text" required={true} id="movementInput" autoComplete="on" list="movementList" onChange={handleMovementChange} value={selectedMovement}/><br />
-            </label>
-            <label htmlFor="weightInput" className="inputLabel" >Weight
-                <input className="inputBox" type="number" id="weightInput" onChange={handleWeightChange} value={weightUsed} min={0} max={1000}/>
-            </label>
-            <label htmlFor="repsInput" className="inputLabel">Reps
-                <input className="inputBox" type="number" id="repsInput" onChange={handleRepsChange} value={repsPerformed} min={1} max={200}/>
-            </label>
-            <label htmlFor="setsInput" className="inputLabel">Sets
-                <input className="inputBox" type="number" id="setsInput" onChange={handleSetsChange} value={setsPerformed} min={1} max={20}/>
-            </label>
+            <div id="movementInputContainer">
+                <label htmlFor="movementInput">Movement
+                    <input className="inputBox longInputBox" type="text" required={true} id="movementInput" autoComplete="on" list="movementList" 
+                    onChange={handleMovementChange} value={selectedMovement}/><br />
+                </label>
+            </div>
+            <div id="smallWorkoutInputContainer">
+                <label htmlFor="weightInput" className="inputLabel" >Weight
+                    <input className="inputBox" type="number" id="weightInput" onChange={handleWeightChange} value={weightUsed} min={0} max={1000}/>
+                </label>
+                <label htmlFor="repsInput" className="inputLabel">Reps
+                    <input className="inputBox" type="number" id="repsInput" onChange={handleRepsChange} value={repsPerformed} min={1} max={200}/>
+                </label>
+                <label htmlFor="setsInput" className="inputLabel">Sets
+                    <input className="inputBox" type="number" id="setsInput" onChange={handleSetsChange} value={setsPerformed} min={1} max={20}/>
+                </label>
+            </div>
             <br />
-            <input type="submit" className="submitButton"></input>
+            <input type="submit" className="submitButton longSubmitButton"></input>
         </form>
     );
 }

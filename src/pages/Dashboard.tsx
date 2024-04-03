@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useIsAuthenticated from "react-auth-kit/hooks/useIsAuthenticated";
-import HistoryFrame from "../components/dashboard/HistoryFrame";
-import LogFrame from "../components/dashboard/LogFrame";
-import ProfileFrame from "../components/dashboard/ProfileFrame";
+import HistoryFrame from "../components/dashboard/history/HistoryFrame";
+import LogFrame from "../components/dashboard/log/LogFrame";
+import ProfileFrame from "../components/dashboard/profile/ProfileFrame";
 import "../styles/Dashboard.css";
 import "../styles/DashboardMobile.css";
+//import StatsFrame from "../components/dashboard/stats/StatsFrame";
 
 function Dashboard() {
 

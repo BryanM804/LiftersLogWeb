@@ -48,9 +48,9 @@ function LabelChanger({ prevLabel, date, onClick }:LabelChangerProps) {
     return (
         <div>
             <form onSubmit={handleLabelSubmission}>
-                <input type="text" placeholder="Label" id="labelInput" className="inputBox" 
+                <input type="text" placeholder="Label" className="inputBox longInputBox" 
                 value={newLabel} onChange={(e:BaseSyntheticEvent) => setNewLabel(e.target.value)}/>
-                <input type="submit" className="submitButton"></input>
+                <input type="submit" className="submitButton longSubmitButton"></input>
             </form>
         </div>
     );
