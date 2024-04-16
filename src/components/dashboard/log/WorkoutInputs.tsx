@@ -15,6 +15,9 @@ function WorkoutInputs({ onChanges }: WorkoutInputsProps) {
     const user = useAuthUser<UserData>() || {username: "", discordid: ""};
     // It thinks user could be null but this path will not be reached if there is no auth user
 
+    const [usingCustomDate, setUsingCustomDate] = useState(false);
+    const [dateError, setDateError] = useState("");
+    const [logResult, setLogResult] = useState("");
     const [movements, setMovements] = useState([{
         "movement": "",
         "exerciseid": 0
@@ -32,6 +35,7 @@ function WorkoutInputs({ onChanges }: WorkoutInputsProps) {
     const [repsPerformed, setRepsPerformed] = useState(0);
     const [weightUsed, setWeightUsed] = useState(0);
     const [setsPerformed, setSetsPerformed] = useState(1);
+    const [customDate, setCustomDate] = useState("");
 
     function handleMovementChange(e: BaseSyntheticEvent) {
         setSelectedMovement(e.target.value);
@@ -45,9 +49,31 @@ function WorkoutInputs({ onChanges }: WorkoutInputsProps) {
     function handleSetsChange(e: BaseSyntheticEvent) {
         setSetsPerformed(e.target.value);
     }
+    function handleDateChange(e: BaseSyntheticEvent) {
+        setCustomDate(e.target.value);
+    }
+
+    function clearLogResult() {
+        setLogResult("");
+    }
 
     function handleSubmit(e: SyntheticEvent) {
         e.preventDefault();
+
+        let setDate;
+
+        if (usingCustomDate) {
+            let dateNum = Date.parse(customDate);
+            if (Number.isNaN(dateNum)) {
+                setDateError("Set not submitted, invalid date.");
+                return;
+            } else {
+                setDateError("");
+            }
+            setDate = new Date(dateNum).toDateString();
+        } else {
+            setDate = new Date().toDateString();
+        }
         
         fetch("http://72.68.45.172:5000/log", {
             method: "POST",
@@ -60,11 +86,13 @@ function WorkoutInputs({ onChanges }: WorkoutInputsProps) {
                 reps: repsPerformed,
                 weight: weightUsed,
                 sets: setsPerformed,
-                date: new Date().toDateString()
+                date: setDate
             })
         }).then((response) => {
             response.json().then((responseJSON) => {
                 console.log(responseJSON);
+                setLogResult("Set logged!");
+                setTimeout(clearLogResult, 5000);
                 onChanges();
             });
         });
@@ -84,18 +112,38 @@ function WorkoutInputs({ onChanges }: WorkoutInputsProps) {
                 </label>
             </div>
             <div id="smallWorkoutInputContainer">
-                <label htmlFor="weightInput" className="inputLabel" >Weight
+                <label htmlFor="weightInput" className="inputLabel" >Weight<br />
                     <input className="inputBox" type="number" id="weightInput" onChange={handleWeightChange} value={weightUsed} min={0} max={1000}/>
                 </label>
-                <label htmlFor="repsInput" className="inputLabel">Reps
+                <label htmlFor="repsInput" className="inputLabel">Reps<br />
                     <input className="inputBox" type="number" id="repsInput" onChange={handleRepsChange} value={repsPerformed} min={1} max={200}/>
                 </label>
-                <label htmlFor="setsInput" className="inputLabel">Sets
+                <label htmlFor="setsInput" className="inputLabel">Sets<br />
                     <input className="inputBox" type="number" id="setsInput" onChange={handleSetsChange} value={setsPerformed} min={1} max={20}/>
                 </label>
+                <br />
+                { 
+                    usingCustomDate &&
+                        <div>
+                            <br />
+                            <label htmlFor="dateInput" className="inputLabel">Date<br />
+                                <input className="inputBox longInputBox" type="text" required={true} id="dateInput" onChange={handleDateChange} value={customDate} />
+                            </label>
+                            { dateError != "" &&
+                                <span className="errorText">{dateError}<br /></span>
+                            }
+                        </div>
+                }
             </div>
             <br />
             <input type="submit" className="submitButton longSubmitButton"></input>
+            <p>{logResult}</p>
+            {
+                !usingCustomDate ?
+                    <u className="linkText" onClick={() => setUsingCustomDate(true)}>Older date?</u>
+                :
+                    <u className="linkText" onClick={() => setUsingCustomDate(false)}>Use today's date</u>
+            }
         </form>
     );
 }

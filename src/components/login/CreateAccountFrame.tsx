@@ -1,5 +1,4 @@
 import { BaseSyntheticEvent, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 function CreateAccountFrame() {
 
@@ -8,8 +7,7 @@ function CreateAccountFrame() {
     const [confirmedPassword, setConfirmedPassword] = useState("");
     const [passwordMatch, setPasswordMatch] = useState(true);
     const [usernameTaken, setUsernameTaken] = useState(false);
-
-    const navigate = useNavigate();
+    const [newAccountCreated, setNewAccountCreated] = useState(false);
 
     function handleSubmission(e: BaseSyntheticEvent) {
         e.preventDefault();
@@ -32,8 +30,11 @@ function CreateAccountFrame() {
                     if (responseJSON.message == "Username taken.") {
                         setPasswordMatch(true);
                         setUsernameTaken(true);
+                        setNewAccountCreated(false);
                     } else {
-                        navigate("/");
+                        setNewAccountCreated(true);
+                        setUsernameTaken(false);
+                        setPasswordMatch(true);
                     }
                 })
             })
@@ -52,6 +53,7 @@ function CreateAccountFrame() {
                 <br />
                 { !passwordMatch && <span className="errorText">Passwords do not match.<br /></span> }
                 { usernameTaken && <span className="errorText">Username already exists.<br/></span> }
+                { newAccountCreated && <span>Account created successfully!<br /></span> }
                 <input type="submit" className="loginSubmitButton"></input>
             </form>
             <br />
@@ -65,6 +67,9 @@ function CreateAccountFrame() {
                 <p>
                     This is currently meant to pair with your already existing discord profile. <b>Your username must match your discord username exactly (CASE SENSITIVE)</b> to pair with your existing profile.
                     You can still use this without a discord profile, but if you choose to use the bot later there is currently no way to link them after, so before creating your account go on discord and use /profile to create a profile.
+                </p>
+                <p>
+                    Be careful if you use this at the same time as the bot, it is untested and might cause weird problems.
                 </p>
             </div>
             <br />

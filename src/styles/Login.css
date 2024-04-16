@@ -30,10 +30,11 @@ h3 {
 }
 
 .linkText {
-    color: blue;
-    cursor: pointer; 
+    color: lightblue;
+    cursor: pointer;
 }
 
 .linkText:hover {
-    background-color: lightblue;
+    background-color: white;
+    color: blue;
 }
